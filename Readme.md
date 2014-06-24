@@ -1,6 +1,7 @@
 # express-domain-redirect
 
 [![Build Status](https://travis-ci.org/bdemirkir/express-domain-redirect.svg?branch=master)](https://travis-ci.org/bdemirkir/express-domain-redirect)
+[![Coverage Status](https://coveralls.io/repos/bdemirkir/express-domain-redirect/badge.png)](https://coveralls.io/r/bdemirkir/express-domain-redirect)
 
 Makes express.js multi-domain websites redirected to main domain
 
