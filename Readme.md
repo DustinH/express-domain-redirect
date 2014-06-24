@@ -5,14 +5,10 @@
 ## Installation
 
 ```
-$ npm install debug
+$ npm install express-domain-redirect
 ```
 
 ## Usage
-
- With `debug` you simply invoke the exported function to generate your debug function, passing it a name which will determine if a noop function is returned, or a decorated `console.error`, so all of the `console` format string goodies you're used to work fine. A unique color is selected per-function for visibility.
- 
-Example _app.js_:
 
 ```js
 app.use(require('express-domain-redirect')('www.yourdomain.com'));
