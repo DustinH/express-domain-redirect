@@ -1,6 +1,8 @@
 # express-domain-redirect
 
-  Makes express.js multi-domain websites redirected to main domain
+[![Build Status](https://travis-ci.org/bdemirkir/express-domain-redirect.svg?branch=master)](https://travis-ci.org/bdemirkir/express-domain-redirect)
+
+Makes express.js multi-domain websites redirected to main domain
 
 ## Installation
 
