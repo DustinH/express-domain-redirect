@@ -1,0 +1,37 @@
+{
+  "name": "express-domain-redirect",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bdemirkir/express-domain-redirect.git"
+  },
+  "description": "simple domain redirection module for express",
+  "keywords": [
+    "redirect",
+    "domain",
+    "express"
+  ],
+  "author": {
+    "name": "Berk Demirkır"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "istanbul": "0.2.10",
+    "mocha": "~1.20.0",
+    "should": "~4.0.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec --check-leaks test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
+  },
+  "readmeFilename": "Readme.md",
+  "bugs": {
+    "url": "https://github.com/bdemirkir/express-domain-redirect/issues"
+  },
+  "homepage": "https://github.com/bdemirkir/express-domain-redirect"
+}
