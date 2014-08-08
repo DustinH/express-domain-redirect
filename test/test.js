@@ -33,6 +33,22 @@ describe('Module', function() {
     });
   });
 
+  it('should redirect requests from different protocol', function(done) {
+    var req = {
+      host: 'foo.bar',
+      url: '/foobar?foo=bar',
+      protocol: 'http'
+    };
+    var res = {
+      redirect: function(code, uri) {
+        done();
+      }
+    };
+    redirect('foo.bar', true)(req, res, function next() {
+      throw new Error('Didn\'t redirect!');
+    });
+  });
+
   it('should keep protocol the same', function(done) {
     var req = {
       host: 'foo.bar',
@@ -48,6 +64,44 @@ describe('Module', function() {
       }
     };
     redirect('foo.bar.baz')(req, res, function next() {
+      throw new Error('Didn\'t redirect!');
+    });
+  });
+
+  it('should set protocol to https', function(done) {
+    var req = {
+      host: 'foo.bar',
+      url: '/foobar?foo=bar',
+      protocol: 'http'
+    };
+    var res = {
+      redirect: function(code, uri) {
+        if (uri.indexOf(req.protocol + '://') === 0)
+          throw new Error('Protocol is the same');
+        else
+          done();
+      }
+    };
+    redirect('foo.bar.baz', true)(req, res, function next() {
+      throw new Error('Didn\'t redirect!');
+    });
+  });
+
+  it('should keep protocol as https', function(done) {
+    var req = {
+      host: 'foo.bar',
+      url: '/foobar?foo=bar',
+      protocol: 'https'
+    };
+    var res = {
+      redirect: function(code, uri) {
+        if (uri.indexOf(req.protocol + '://') === 0)
+          done();
+        else
+          throw new Error('Protocol is different');
+      }
+    };
+    redirect('foo.bar.baz', true)(req, res, function next() {
       throw new Error('Didn\'t redirect!');
     });
   });

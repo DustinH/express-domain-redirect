@@ -1,9 +1,13 @@
-module.exports = function(domain) {
+module.exports = function(domain, force_https) {
   return function(req, res, next) {
-    if (domain === req.host) {
+    var protocol = req.protocol;
+    if (force_https === true) {
+        protocol = 'https';
+    }
+    if (domain === req.host && req.protocol === protocol) {
       next();
     } else {
-      res.redirect(301, req.protocol + '://' + domain + req.url);
+      res.redirect(301, protocol + '://' + domain + req.url);
     }
   };
 }
