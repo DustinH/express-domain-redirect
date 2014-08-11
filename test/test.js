@@ -1,6 +1,6 @@
 var redirect = require('..');
 
-describe('Module', function() {
+describe('redirect', function() {
   it('should not redirect requests from the same domain', function(done) {
     var req = {
       host: 'foo.bar',
@@ -13,6 +13,22 @@ describe('Module', function() {
       }
     };
     redirect('foo.bar')(req, res, function next() {
+      done();
+    });
+  });
+
+  it('should not redirect https requests from the same domain when forced to https', function(done) {
+    var req = {
+      host: 'foo.bar',
+      url: '/foobar?foo=bar',
+      protocol: 'https'
+    };
+    var res = {
+      redirect: function(code, uri) {
+        throw new Error('Redirected!');
+      }
+    };
+    redirect('foo.bar', true)(req, res, function next() {
       done();
     });
   });
